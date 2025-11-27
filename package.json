@@ -1,0 +1,19 @@
+{
+  "name": "ala-2-pdp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/main.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.20",
+    "@types/prompt-sync": "^4.2.3",
+    "typescript": "^5.0.0"
+  }
+}
