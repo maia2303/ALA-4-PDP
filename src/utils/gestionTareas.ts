@@ -61,5 +61,5 @@ export const buscarTarea = (lista: readonly Tarea[], palabraClave: string): Tare
 
 export const obtenerSiguienteId = (lista: readonly Tarea[]): number => { //funcion pura para obtener el siguiente id de tarea
     return lista.length > 0?
-Math.max(...lista.map(t => t.id)) + 1: 1;
+    Math.max(...lista.map(t => t.id)) + 1: 1;
 };

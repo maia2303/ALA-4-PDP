@@ -7,19 +7,19 @@ const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const gestionTareas_1 = require("./utils/gestionTareas");
 const prompt = (0, prompt_sync_1.default)();
 const imprimirTarea = (t) => {
-    const estrella = "★".repeat(t.dificultad) + "☆".repeat(3 - t.dificultad);
-    console.log(`[ID: ${t.id}] ${t.titulo} ${t.estado} -Dificultad: ${estrella}`);
+    console.log(`[ID: ${t.id}] ${t.titulo} `);
 };
 const mostrarDetalles = (t) => {
-    console.log(`----------------------------------------
-        Titulo: ${t.titulo}
-        Descripción: ${t.descripcion}
-        Estado: ${t.estado}
-        Vencimiento: ${t.vencimiento}
-        Creación: ${t.creacion}
-        Ultima edición: ${t.ultimaEdicion}
-        -----------------------------------------
-        `);
+    const dificultadEstrella = "★".repeat(t.dificultad) + "☆".repeat(3 - t.dificultad);
+    console.log(`
+    ID: ${t.id} \n
+    Título: ${t.titulo}\n
+    Descripción: ${t.descripcion}\n
+    Dificultad: ${t.dificultad} - ${dificultadEstrella}\n
+    Estado: ${t.estado}\n
+    Vencimiento: ${t.vencimiento}\n
+    Creación: ${t.creacion}\n
+    Última edición: ${t.ultimaEdicion}`);
 };
 const menuAgregar = (listaActual) => {
     console.log("---NUEVA TAREA---");
@@ -64,7 +64,7 @@ const menuEditar = (listaActual, id) => {
     return (0, gestionTareas_1.editarTareaLista)(listaActual, id, cambios);
 };
 const menuVer = (listaActual) => {
-    const opcion = prompt("¿Qué tareas deseas ver? \n[1] Todas | [2] Pendientes | [3] En curso | [4] Terminadas | [5] Canceladas:  ");
+    const opcion = prompt("¿Qué tareas deseas ver? [1] Todas | [2] Pendientes | [3] En curso | [4] Terminadas | [5] Canceladas:  ");
     let filtrar;
     if (opcion === '2')
         filtrar = 'pendiente';

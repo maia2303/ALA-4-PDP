@@ -6,22 +6,21 @@ import { crearTarea, agregarTareaLista, editarTareaLista, filtrarTareas, buscarT
 const prompt = PromptSync();
 
 const imprimirTarea = (t: Tarea) => {
-    const estrella = "★".repeat(t.dificultad) + "☆".repeat(3 - t.dificultad);
-    console.log(`[ID: ${t.id}] ${t.titulo} ${t.estado} -Dificultad: ${estrella}`);
+    console.log(`[ID: ${t.id}] ${t.titulo} `);
 };
 
 const mostrarDetalles = (t: Tarea) => {
-    console.log(
-        `----------------------------------------
-        Titulo: ${t.titulo}
-        Descripción: ${t.descripcion}
-        Estado: ${t.estado}
-        Vencimiento: ${t.vencimiento}
-        Creación: ${t.creacion}
-        Ultima edición: ${t.ultimaEdicion}
-        -----------------------------------------
-        `
-    );
+    const dificultadEstrella = "★".repeat(t.dificultad) + "☆".repeat(3 - t.dificultad);
+
+    console.log(`
+    ID: ${t.id} \n
+    Título: ${t.titulo}\n
+    Descripción: ${t.descripcion}\n
+    Dificultad: ${dificultadEstrella}\n
+    Estado: ${t.estado}\n
+    Vencimiento: ${t.vencimiento}\n
+    Creación: ${t.creacion}\n
+    Última edición: ${t.ultimaEdicion}`);
 };
 
 
@@ -68,7 +67,7 @@ const menuEditar = (listaActual: readonly Tarea[], id: number): Tarea[] => {
 };
 
 const menuVer = (listaActual: readonly Tarea[]) => {
-    const opcion = prompt("¿Qué tareas deseas ver? \n[1] Todas | [2] Pendientes | [3] En curso | [4] Terminadas | [5] Canceladas:  ");
+    const opcion = prompt("¿Qué tareas deseas ver? [1] Todas | [2] Pendientes | [3] En curso | [4] Terminadas | [5] Canceladas:  ");
     let filtrar: Estado | undefined;
     if(opcion === '2') filtrar = 'pendiente';
     if(opcion === '3') filtrar = 'en curso';
@@ -82,7 +81,7 @@ const menuVer = (listaActual: readonly Tarea[]) => {
         resultados.forEach(imprimirTarea);
     }
 
-    const idVer = Number(prompt("Elija el ID de la tarea que desea ver (o 0 para volver)"));
+    const idVer = Number(prompt("Elija el ID de la tarea que desea ver (o 0 para volver) -"));
     if(idVer !== 0) {
         const t = resultados.find(tarea => tarea.id === idVer);
         if (t) mostrarDetalles(t);
